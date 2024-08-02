@@ -27,30 +27,64 @@ function buildCharts(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
 
     // Get the samples field
-
+    let samples = data.samples;
 
     // Filter the samples for the object with the desired sample number
-
+    let filteredSample = samples.filter(sampleObject => sampleObject.id == sample);
+    let selectedData   = filteredSample[0];
 
     // Get the otu_ids, otu_labels, and sample_values
-
+    let otu_ids       = selectedData.otu_ids;
+    let otu_labels    = selectedData.otu_labels;
+    let sample_values = selectedData.sample_values;
 
     // Build a Bubble Chart
+    let bubbleTrace = {     x : otu_ids,
+                            y : sample_values,
+                         text : otu_labels,
+                         mode : 'markers',
+                       marker : {      size : sample_values,
+                                      color : otu_ids,
+                                 colorscale : 'Earth'}
+                       };
+
+    let bubbleLayout = {title : 'Bubble Chart of Sample Data',
+                      xaxis : { title: 'OTU ID' },
+                      yaxis : { title: 'Sample Values' }
+                      };
+
+
 
 
     // Render the Bubble Chart
-
+    Plotly.newPlot('bubble',
+                   [bubbleTrace],
+                   bubbleLayout);
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
-
+    let yticks    = otu_ids.slice(0, 10).map(id => `OTU ${id}`).reverse();
+    let barValues = sample_values.slice(0, 10).reverse();
+    let barLabels = otu_labels.slice(0, 10).reverse();
 
     // Build a Bar Chart
     // Don't forget to slice and reverse the input data appropriately
+    let barTrace = {          x : barValues,
+                              y : yticks,
+                           text : barLabels,
+                           type : 'bar'
+                     rientation : 'h'
+                    };
 
+    let barLayout = {title : 'Top 10 OTUs Found in Sample',
+                     xaxis : { title: 'Sample Values' },
+                     yaxis : { title: 'OTU ID'}
+                     };
 
     // Render the Bar Chart
-
-  });
+    Plotly.newPlot('bar',
+                   [barTrace],
+                   barLayout);
+});
 }
 
 // Function to run on page load
