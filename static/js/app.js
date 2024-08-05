@@ -71,7 +71,7 @@ function buildCharts(sample) {
     let barTrace = {          x : barValues,
                               y : yticks,
                            text : barLabels,
-                           type : 'bar'
+                           type : 'bar',
                     orientation : 'h'
                     };
 
