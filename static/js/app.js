@@ -72,7 +72,7 @@ function buildCharts(sample) {
                               y : yticks,
                            text : barLabels,
                            type : 'bar'
-                     rientation : 'h'
+                    orientation : 'h'
                     };
 
     let barLayout = {title : 'Top 10 OTUs Found in Sample',
