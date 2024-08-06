@@ -107,7 +107,7 @@ function init() {
     names.forEach((sample) => {dropdownSelected.append("option")
                                                .text(sample)
                                                .property("value", sample);
-                               });
+                               }); // code for the loop obtained via use of ChatGPT
 
     // Get the first sample from the list
     let nameFirst = names[0];
