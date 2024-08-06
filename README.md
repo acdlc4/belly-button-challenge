@@ -9,6 +9,8 @@ The dataset reveals that a small handful of microbial species (also called opera
 #### Live Deployment address:
 - https://acdlc4.github.io/belly-button-challenge/
 
+![Screen capture of live website](https://github.com/acdlc4/belly-button-challenge/blob/main/static/images/PageDeployment.png)
+
 #### HTML code location:
 - https://github.com/acdlc4/belly-button-challenge/blob/main/index.html
 
