@@ -45,7 +45,7 @@ function buildCharts(sample) {
                          mode : 'markers',
                        marker : {      size : sample_values,
                                       color : otu_ids,
-                                 colorscale : 'Earth'}
+                                 colorscale : 'YlGnBu'}
                        };
 
     let bubbleLayout = {title : 'Bubble Chart of Sample Data',
@@ -72,7 +72,11 @@ function buildCharts(sample) {
                               y : yticks,
                            text : barLabels,
                            type : 'bar',
-                    orientation : 'h'
+                    orientation : 'h',
+                         marker : {color: 'rgba(97, 157, 196, 0.85)',
+                                  line: {color: 'rgb(8,48,107)',
+                                         width: 0.5}
+                                   }
                     };
 
     let barLayout = {title : 'Top 10 OTUs Found in Sample',
@@ -106,11 +110,11 @@ function init() {
                                });
 
     // Get the first sample from the list
-    let nameOne = names[0];
+    let nameFirst = names[0];
 
     // Build charts and metadata panel with the first sample
-    buildCharts(nameOne);
-    buildMetadata(nameOne);
+    buildCharts(nameFirst);
+    buildMetadata(nameFirst);
   });
 }
 
